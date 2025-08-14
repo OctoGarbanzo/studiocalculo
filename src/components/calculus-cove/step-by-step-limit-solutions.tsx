@@ -115,6 +115,64 @@ const solutions_en = [
             yDomain: [0, 1] as [number, number],
             isRemovable: false
         }
+    },
+    {
+        problem: "\\lim_{x \\to \\infty} \\frac{3x^3 + 2x}{x^2 - 5x + 1}",
+        steps: [
+            {
+                explanation: "The degree of the numerator (3) is greater than the degree of the denominator (2). The limit will be either positive or negative infinity.",
+                math: ""
+            },
+            {
+                explanation: "Divide every term by the highest power of x in the denominator, which is x^2.",
+                math: "= \\lim_{x \\to \\infty} \\frac{\\frac{3x^3}{x^2} + \\frac{2x}{x^2}}{\\frac{x^2}{x^2} - \\frac{5x}{x^2} + \\frac{1}{x^2}}"
+            },
+            {
+                explanation: "Simplify the expression.",
+                math: "= \\lim_{x \\to \\infty} \\frac{3x + \\frac{2}{x}}{1 - \\frac{5}{x} + \\frac{1}{x^2}}"
+            },
+            {
+                explanation: "As x approaches infinity, the numerator approaches infinity while the denominator approaches 1.",
+                math: "= \\frac{\\infty}{1} = \\infty"
+            }
+        ],
+         graph: {
+            func: (x: number) => (3*x**3 + 2*x) / (x**2 - 5*x + 1),
+            c: Infinity,
+            limit: Infinity,
+            xDomain: [0, 100] as [number, number],
+            yDomain: [0, 300] as [number, number],
+            isRemovable: false
+        }
+    },
+    {
+        problem: "\\lim_{x \\to \\infty} \\frac{4x^2 - 1}{x^3 + 2x^2}",
+        steps: [
+            {
+                explanation: "The degree of the numerator (2) is less than the degree of the denominator (3). The limit will be 0.",
+                math: ""
+            },
+            {
+                explanation: "Divide every term by the highest power of x in the denominator, which is x^3.",
+                math: "= \\lim_{x \\to \\infty} \\frac{\\frac{4x^2}{x^3} - \\frac{1}{x^3}}{\\frac{x^3}{x^3} + \\frac{2x^2}{x^3}}"
+            },
+            {
+                explanation: "Simplify the expression.",
+                math: "= \\lim_{x \\to \\infty} \\frac{\\frac{4}{x} - \\frac{1}{x^3}}{1 + \\frac{2}{x}}"
+            },
+            {
+                explanation: "As x approaches infinity, the terms in the numerator approach 0, while the denominator approaches 1.",
+                math: "= \\frac{0 - 0}{1 + 0} = 0"
+            }
+        ],
+         graph: {
+            func: (x: number) => (4*x**2 - 1) / (x**3 + 2*x**2),
+            c: Infinity,
+            limit: 0,
+            xDomain: [0, 100] as [number, number],
+            yDomain: [-0.1, 1] as [number, number],
+            isRemovable: false
+        }
     }
 ];
 
@@ -220,6 +278,64 @@ const solutions_es = [
             limit: 2/3,
             xDomain: [0, 100] as [number, number],
             yDomain: [0, 1] as [number, number],
+            isRemovable: false
+        }
+    },
+    {
+        problem: "\\lim_{x \\to \\infty} \\frac{3x^3 + 2x}{x^2 - 5x + 1}",
+        steps: [
+            {
+                explanation: "El grado del numerador (3) es mayor que el grado del denominador (2). El límite será infinito positivo o negativo.",
+                math: ""
+            },
+            {
+                explanation: "Dividir cada término por la mayor potencia de x en el denominador, que es x^2.",
+                math: "= \\lim_{x \\to \\infty} \\frac{\\frac{3x^3}{x^2} + \\frac{2x}{x^2}}{\\frac{x^2}{x^2} - \\frac{5x}{x^2} + \\frac{1}{x^2}}"
+            },
+            {
+                explanation: "Simplificar la expresión.",
+                math: "= \\lim_{x \\to \\infty} \\frac{3x + \\frac{2}{x}}{1 - \\frac{5}{x} + \\frac{1}{x^2}}"
+            },
+            {
+                explanation: "A medida que x se acerca a infinito, el numerador tiende a infinito mientras que el denominador tiende a 1.",
+                math: "= \\frac{\\infty}{1} = \\infty"
+            }
+        ],
+         graph: {
+            func: (x: number) => (3*x**3 + 2*x) / (x**2 - 5*x + 1),
+            c: Infinity,
+            limit: Infinity,
+            xDomain: [0, 100] as [number, number],
+            yDomain: [0, 300] as [number, number],
+            isRemovable: false
+        }
+    },
+    {
+        problem: "\\lim_{x \\to \\infty} \\frac{4x^2 - 1}{x^3 + 2x^2}",
+        steps: [
+            {
+                explanation: "El grado del numerador (2) es menor que el grado del denominador (3). El límite será 0.",
+                math: ""
+            },
+            {
+                explanation: "Dividir cada término por la mayor potencia de x en el denominador, que es x^3.",
+                math: "= \\lim_{x \\to \\infty} \\frac{\\frac{4x^2}{x^3} - \\frac{1}{x^3}}{\\frac{x^3}{x^3} + \\frac{2x^2}{x^3}}"
+            },
+            {
+                explanation: "Simplificar la expresión.",
+                math: "= \\lim_{x \\to \\infty} \\frac{\\frac{4}{x} - \\frac{1}{x^3}}{1 + \\frac{2}{x}}"
+            },
+            {
+                explanation: "A medida que x se acerca a infinito, los términos en el numerador se acercan a 0, mientras que el denominador se acerca a 1.",
+                math: "= \\frac{0 - 0}{1 + 0} = 0"
+            }
+        ],
+         graph: {
+            func: (x: number) => (4*x**2 - 1) / (x**3 + 2*x**2),
+            c: Infinity,
+            limit: 0,
+            xDomain: [0, 100] as [number, number],
+            yDomain: [-0.1, 1] as [number, number],
             isRemovable: false
         }
     }
