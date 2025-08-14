@@ -1,6 +1,8 @@
+
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
+import { LanguageProvider } from '@/hooks/use-language';
 
 export const metadata: Metadata = {
   title: 'Calculus Cove',
@@ -22,7 +24,9 @@ export default function RootLayout({
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0KOVEMVIgtUIk/dpYNcNZCDenw5BXhEV8MNEP/m+SrOTUSOJNANS2" crossOrigin="anonymous" />
       </head>
       <body className="font-body antialiased">
-        {children}
+        <LanguageProvider>
+            {children}
+        </LanguageProvider>
         <Toaster />
       </body>
     </html>

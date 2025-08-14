@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -10,7 +11,6 @@ import {
   SidebarMenuItem,
   SidebarMenuButton,
   SidebarInset,
-  SidebarTrigger,
 } from '@/components/ui/sidebar';
 import { Card, CardHeader, CardTitle } from '@/components/ui/card';
 import { AreaChart, Infinity, Target, TrendingUp, Menu } from 'lucide-react';
@@ -18,8 +18,10 @@ import { IntegralIcon } from '@/components/icons';
 import { ModuleContent } from '@/components/calculus-cove/module-content';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet';
+import { LanguageSwitcher } from './language-switcher';
+import { useLanguage } from '@/hooks/use-language';
 
-const modules = [
+const modules_en = [
   { id: 'limits', title: 'Limits and Continuity', icon: Infinity, comingSoon: true },
   { id: 'derivatives', title: 'Derivatives', icon: TrendingUp },
   { id: 'applications-of-derivatives', title: 'Applications of the Derivative', icon: Target, comingSoon: true },
@@ -27,7 +29,18 @@ const modules = [
   { id: 'applications-of-integrals', title: 'Applications of Integrals', icon: AreaChart, comingSoon: true },
 ];
 
+const modules_es = [
+    { id: 'limits', title: 'Límites y Continuidad', icon: Infinity, comingSoon: true },
+    { id: 'derivatives', title: 'Derivadas', icon: TrendingUp },
+    { id: 'applications-of-derivatives', title: 'Aplicaciones de la Derivada', icon: Target, comingSoon: true },
+    { id: 'integrals', title: 'Integrales', icon: IntegralIcon, comingSoon: true },
+    { id: 'applications-of-integrals', title: 'Aplicaciones de Integrales', icon: AreaChart, comingSoon: true },
+  ];
+
 export function Dashboard() {
+    const { language } = useLanguage();
+    const modules = language === 'en' ? modules_en : modules_es;
+
   const [selectedModule, setSelectedModule] = React.useState(modules[1].id);
   const activeModule = modules.find((m) => m.id === selectedModule) || modules[1];
 
@@ -73,24 +86,30 @@ export function Dashboard() {
             <IntegralIcon className="w-6 h-6 text-primary" />
             <span className="font-bold text-lg">Calculus Cove</span>
          </div>
-        <Sheet>
-          <SheetTrigger asChild>
-            <Button variant="ghost" size="icon">
-              <Menu />
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="left" className="p-0 w-72">
-            <Sidebar>
-                {sidebarContent}
-            </Sidebar>
-          </SheetContent>
-        </Sheet>
+        <div className="flex items-center gap-2">
+            <LanguageSwitcher />
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <Menu />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="left" className="p-0 w-72">
+                <Sidebar>
+                    {sidebarContent}
+                </Sidebar>
+              </SheetContent>
+            </Sheet>
+        </div>
       </div>
       <div className="flex">
         <Sidebar className="hidden md:flex" collapsible="icon">
             {sidebarContent}
         </Sidebar>
         <SidebarInset className="flex-1">
+            <div className='hidden md:flex justify-end p-4'>
+                <LanguageSwitcher />
+            </div>
           <ModuleContent key={activeModule.id} module={activeModule} />
         </SidebarInset>
       </div>
