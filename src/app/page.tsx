@@ -1,3 +1,9 @@
+import { Dashboard } from '@/components/calculus-cove/dashboard';
+
 export default function Home() {
-  return <></>;
+  return (
+    <main>
+      <Dashboard />
+    </main>
+  );
 }
