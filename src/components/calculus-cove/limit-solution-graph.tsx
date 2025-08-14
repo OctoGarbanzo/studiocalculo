@@ -31,8 +31,15 @@ export function LimitSolutionGraph({ func, c, limit, xDomain, yDomain, isRemovab
     const step = (xDomain[1] - xDomain[0]) / 200;
     for (let x = xDomain[0]; x <= xDomain[1]; x += step) {
       // Create a gap for the discontinuity
-      if (isRemovable && Math.abs(x - c) < step) {
-        points.push({ x: c, y: undefined });
+      if (Math.abs(x - c) < step) {
+        if(isRemovable) {
+            points.push({ x: c, y: undefined });
+        } else {
+             // For vertical asymptotes, create a gap by adding undefined points
+             points.push({x: c - 0.0001, y: func(c - 0.0001)})
+             points.push({x: c, y: undefined})
+             points.push({x: c + 0.0001, y: func(c + 0.0001)})
+        }
         continue;
       }
       const y = func(x);
@@ -40,7 +47,7 @@ export function LimitSolutionGraph({ func, c, limit, xDomain, yDomain, isRemovab
         points.push({ x, y });
       }
     }
-    return points;
+    return points.sort((a, b) => a.x - b.x);
   }, [func, c, xDomain, isRemovable]);
 
   return (
@@ -72,3 +79,5 @@ export function LimitSolutionGraph({ func, c, limit, xDomain, yDomain, isRemovab
     </div>
   );
 }
+
+    

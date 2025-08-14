@@ -173,6 +173,56 @@ const solutions_en = [
             yDomain: [-0.1, 1] as [number, number],
             isRemovable: false
         }
+    },
+    {
+        problem: "\\lim_{x \\to 0^+} \\frac{1}{x}",
+        steps: [
+            {
+                explanation: "This is a right-sided limit. We are interested in the behavior of the function as x approaches 0 from the positive side.",
+                math: ""
+            },
+            {
+                explanation: "As x approaches 0 from the right (e.g., 0.1, 0.01, 0.001), x is a small positive number.",
+                math: ""
+            },
+            {
+                explanation: "The reciprocal of a very small positive number is a very large positive number.",
+                math: "= +\\infty"
+            }
+        ],
+        graph: {
+            func: (x: number) => 1/x,
+            c: 0,
+            limit: Infinity,
+            xDomain: [-5, 5] as [number, number],
+            yDomain: [-20, 20] as [number, number],
+            isRemovable: false
+        }
+    },
+    {
+        problem: "\\lim_{x \\to 0^-} \\frac{1}{x}",
+        steps: [
+            {
+                explanation: "This is a left-sided limit. We are interested in the behavior of the function as x approaches 0 from the negative side.",
+                math: ""
+            },
+            {
+                explanation: "As x approaches 0 from the left (e.g., -0.1, -0.01, -0.001), x is a small negative number.",
+                math: ""
+            },
+            {
+                explanation: "The reciprocal of a very small negative number is a very large negative number.",
+                math: "= -\\infty"
+            }
+        ],
+        graph: {
+            func: (x: number) => 1/x,
+            c: 0,
+            limit: -Infinity,
+            xDomain: [-5, 5] as [number, number],
+            yDomain: [-20, 20] as [number, number],
+            isRemovable: false
+        }
     }
 ];
 
@@ -338,6 +388,56 @@ const solutions_es = [
             yDomain: [-0.1, 1] as [number, number],
             isRemovable: false
         }
+    },
+    {
+        problem: "\\lim_{x \\to 0^+} \\frac{1}{x}",
+        steps: [
+            {
+                explanation: "Este es un límite lateral por la derecha. Estamos interesados en el comportamiento de la función cuando x se acerca a 0 desde valores positivos.",
+                math: ""
+            },
+            {
+                explanation: "A medida que x se acerca a 0 por la derecha (ej. 0.1, 0.01, 0.001), x es un número positivo pequeño.",
+                math: ""
+            },
+            {
+                explanation: "El recíproco de un número positivo muy pequeño es un número positivo muy grande.",
+                math: "= +\\infty"
+            }
+        ],
+        graph: {
+            func: (x: number) => 1/x,
+            c: 0,
+            limit: Infinity,
+            xDomain: [-5, 5] as [number, number],
+            yDomain: [-20, 20] as [number, number],
+            isRemovable: false
+        }
+    },
+    {
+        problem: "\\lim_{x \\to 0^-} \\frac{1}{x}",
+        steps: [
+            {
+                explanation: "Este es un límite lateral por la izquierda. Estamos interesados en el comportamiento de la función cuando x se acerca a 0 desde valores negativos.",
+                math: ""
+            },
+            {
+                explanation: "A medida que x se acerca a 0 por la izquierda (ej. -0.1, -0.01, -0.001), x es un número negativo pequeño.",
+                math: ""
+            },
+            {
+                explanation: "El recíproco de un número negativo muy pequeño es un número negativo muy grande.",
+                math: "= -\\infty"
+            }
+        ],
+        graph: {
+            func: (x: number) => 1/x,
+            c: 0,
+            limit: -Infinity,
+            xDomain: [-5, 5] as [number, number],
+            yDomain: [-20, 20] as [number, number],
+            isRemovable: false
+        }
     }
 ];
 
@@ -390,7 +490,7 @@ export function StepByStepLimitSolutions() {
                                 <div className="flex justify-end mt-4">
                                      <Dialog>
                                         <DialogTrigger asChild>
-                                            <Button variant="outline" size="sm" disabled={solution.graph.c === Infinity}>
+                                            <Button variant="outline" size="sm">
                                                 <AreaChart className="mr-2 h-4 w-4" />
                                                 {viewGraph}
                                             </Button>
@@ -411,3 +511,5 @@ export function StepByStepLimitSolutions() {
         </Card>
     )
 }
+
+    
