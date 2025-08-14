@@ -171,7 +171,15 @@ const LimitsTheory = () => {
             cond1: "is defined (i.e.,",
             cond1_p2: "is in the domain of",
             cond2: "exists.",
-            cond3: ""
+            cond3: "",
+            oneSidedTitle: "One-Sided Limits",
+            oneSidedP1: "Sometimes we are interested in the behavior of a function as it approaches a point from only one side. This leads to the concept of one-sided limits.",
+            oneSidedP2: "The limit from the right means that x approaches c from values greater than c. It is denoted as:",
+            oneSidedP3: "The limit from the left means that x approaches c from values less than c. It is denoted as:",
+            oneSidedP4: "For the two-sided limit",
+            oneSidedP5: "to exist, the limit from the left and the limit from the right must both exist and be equal.",
+            specialLimitsTitle: "Special Trigonometric Limits",
+            specialLimitsP1: "There are two special trigonometric limits that are fundamental in calculus:",
         },
         es: {
             title: "Definición de un Límite",
@@ -196,7 +204,15 @@ const LimitsTheory = () => {
             cond1: "está definida (es decir,",
             cond1_p2: "está en el dominio de",
             cond2: "existe.",
-            cond3: ""
+            cond3: "",
+            oneSidedTitle: "Límites Laterales",
+            oneSidedP1: "A veces nos interesa el comportamiento de una función a medida que se acerca a un punto desde un solo lado. Esto lleva al concepto de límites laterales.",
+            oneSidedP2: "El límite por la derecha significa que x se aproxima a c desde valores mayores que c. Se denota como:",
+            oneSidedP3: "El límite por la izquierda significa que x se aproxima a c desde valores menores que c. Se denota como:",
+            oneSidedP4: "Para que el límite bilaterial",
+            oneSidedP5: "exista, el límite por la izquierda y el límite por la derecha deben existir y ser iguales.",
+            specialLimitsTitle: "Límites Trigonométricos Especiales",
+            specialLimitsP1: "Hay dos límites trigonométricos especiales que son fundamentales en el cálculo:",
         }
     }
 
@@ -230,6 +246,48 @@ const LimitsTheory = () => {
                 <div className="bg-muted p-4 rounded-lg text-center">
                      <BMath>{`\\lim_{x \\to 2} x^2 = 4`}</BMath>
                 </div>
+            </CardContent>
+        </Card>
+
+        <Card>
+            <CardHeader>
+                <CardTitle>{c.oneSidedTitle}</CardTitle>
+            </CardHeader>
+            <CardContent className="prose dark:prose-invert max-w-none space-y-4">
+                <p>{c.oneSidedP1}</p>
+                <p>{c.oneSidedP2}</p>
+                <div className="bg-muted p-4 rounded-lg text-center">
+                    <BMath>{`\\lim_{x \\to c^+} f(x)`}</BMath>
+                </div>
+                <p>{c.oneSidedP3}</p>
+                 <div className="bg-muted p-4 rounded-lg text-center">
+                    <BMath>{`\\lim_{x \\to c^-} f(x)`}</BMath>
+                </div>
+                <p>{c.oneSidedP4} <IMath>{`\\lim_{x \\to c} f(x)`}</IMath> {c.oneSidedP5}</p>
+                <div className="bg-muted p-4 rounded-lg text-center">
+                    <BMath>{`\\lim_{x \\to c^-} f(x) = \\lim_{x \\to c^+} f(x) = L`}</BMath>
+                </div>
+            </CardContent>
+        </Card>
+
+         <Card>
+            <CardHeader>
+                <CardTitle>{c.specialLimitsTitle}</CardTitle>
+            </CardHeader>
+            <CardContent className="prose dark:prose-invert max-w-none space-y-4">
+                <p>{c.specialLimitsP1}</p>
+                 <ul className='list-disc pl-6 space-y-4 mt-2'>
+                    <li>
+                        <div className="bg-muted p-4 rounded-lg text-center">
+                             <BMath>{`\\lim_{x \\to 0} \\frac{\\sin(x)}{x} = 1`}</BMath>
+                        </div>
+                    </li>
+                    <li>
+                         <div className="bg-muted p-4 rounded-lg text-center">
+                             <BMath>{`\\lim_{x \\to 0} \\frac{1 - \\cos(x)}{x} = 0`}</BMath>
+                        </div>
+                    </li>
+                </ul>
             </CardContent>
         </Card>
 
