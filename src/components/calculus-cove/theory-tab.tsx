@@ -37,13 +37,13 @@ export function TheoryTab({ module }: { module: { id: string; title: string } })
                     </div>
                      <p>
                         Let's break down this formula:
-                        <ul className='list-disc pl-6 space-y-2 mt-2'>
-                           <li>The term <InteractiveFormula formula="f(x+h) - f(x)" tooltipText="The change in the function's value (rise)." /> represents the change in the function's output as the input changes by a small amount <IMath>h</IMath>.</li>
-                            <li>The denominator <InteractiveFormula formula="h" tooltipText="The change in the function's input (run)." /> is the change in the input value.</li>
-                            <li>The fraction represents the <InteractiveFormula formula="\frac{\Delta y}{\Delta x}" tooltipText="Average rate of change, or slope of the secant line." />, which is the average rate of change between the points <IMath>(x, f(x))</IMath> and <IMath>(x+h, f(x+h))</IMath>.</li>
-                            <li>The <InteractiveFormula formula="\lim_{h \to 0}" tooltipText="The limit as h approaches zero." /> operation finds the instantaneous rate of change by making the interval <IMath>h</IMath> infinitesimally small.</li>
-                        </ul>
                     </p>
+                    <ul className='list-disc pl-6 space-y-2 mt-2'>
+                        <li>The term <InteractiveFormula formula="f(x+h) - f(x)" tooltipText="The change in the function's value (rise)." /> represents the change in the function's output as the input changes by a small amount <IMath>h</IMath>.</li>
+                        <li>The denominator <InteractiveFormula formula="h" tooltipText="The change in the function's input (run)." /> is the change in the input value.</li>
+                        <li>The fraction represents the <InteractiveFormula formula="\frac{\Delta y}{\Delta x}" tooltipText="Average rate of change, or slope of the secant line." />, which is the average rate of change between the points <IMath>(x, f(x))</IMath> and <IMath>(x+h, f(x+h))</IMath>.</li>
+                        <li>The <InteractiveFormula formula="\lim_{h \to 0}" tooltipText="The limit as h approaches zero." /> operation finds the instantaneous rate of change by making the interval <IMath>h</IMath> infinitesimally small.</li>
+                    </ul>
                 </CardContent>
             </Card>
 
