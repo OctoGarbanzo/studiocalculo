@@ -22,7 +22,7 @@ import { LanguageSwitcher } from './language-switcher';
 import { useLanguage } from '@/hooks/use-language';
 
 const modules_en = [
-  { id: 'limits', title: 'Limits and Continuity', icon: Infinity, comingSoon: true },
+  { id: 'limits', title: 'Limits and Continuity', icon: Infinity },
   { id: 'derivatives', title: 'Derivatives', icon: TrendingUp },
   { id: 'applications-of-derivatives', title: 'Applications of the Derivative', icon: Target, comingSoon: true },
   { id: 'integrals', title: 'Integrals', icon: IntegralIcon, comingSoon: true },
@@ -30,7 +30,7 @@ const modules_en = [
 ];
 
 const modules_es = [
-    { id: 'limits', title: 'Límites y Continuidad', icon: Infinity, comingSoon: true },
+    { id: 'limits', title: 'Límites y Continuidad', icon: Infinity },
     { id: 'derivatives', title: 'Derivadas', icon: TrendingUp },
     { id: 'applications-of-derivatives', title: 'Aplicaciones de la Derivada', icon: Target, comingSoon: true },
     { id: 'integrals', title: 'Integrales', icon: IntegralIcon, comingSoon: true },
@@ -41,8 +41,8 @@ export function Dashboard() {
     const { language } = useLanguage();
     const modules = language === 'en' ? modules_en : modules_es;
 
-  const [selectedModule, setSelectedModule] = React.useState(modules[1].id);
-  const activeModule = modules.find((m) => m.id === selectedModule) || modules[1];
+  const [selectedModule, setSelectedModule] = React.useState(modules[0].id);
+  const activeModule = modules.find((m) => m.id === selectedModule) || modules[0];
 
   const sidebarContent = (
     <>
@@ -53,7 +53,7 @@ export function Dashboard() {
               <IntegralIcon className="w-6 h-6" />
             </div>
             <div>
-              <CardTitle className="text-xl">Calculus Cove</CardTitle>
+              <CardTitle className="text-xl">Rincón del Cálculo</CardTitle>
             </div>
           </CardHeader>
         </Card>
@@ -66,11 +66,11 @@ export function Dashboard() {
                 onClick={() => setSelectedModule(module.id)}
                 isActive={selectedModule === module.id}
                 disabled={module.comingSoon}
-                tooltip={module.comingSoon ? `${module.title} (Coming Soon)` : module.title}
+                tooltip={module.comingSoon ? `${module.title} (Próximamente)` : module.title}
               >
                 <module.icon className="w-5 h-5" />
                 <span>{module.title}</span>
-                {module.comingSoon && <span className="text-xs text-muted-foreground ml-auto">(Soon)</span>}
+                {module.comingSoon && <span className="text-xs text-muted-foreground ml-auto">(Próx.)</span>}
               </SidebarMenuButton>
             </SidebarMenuItem>
           ))}
@@ -84,7 +84,7 @@ export function Dashboard() {
       <div className="md:hidden p-4 flex justify-between items-center bg-card border-b">
          <div className="flex items-center gap-2">
             <IntegralIcon className="w-6 h-6 text-primary" />
-            <span className="font-bold text-lg">Calculus Cove</span>
+            <span className="font-bold text-lg">Rincón del Cálculo</span>
          </div>
         <div className="flex items-center gap-2">
             <LanguageSwitcher />

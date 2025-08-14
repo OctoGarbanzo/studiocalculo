@@ -1,3 +1,4 @@
+
 'use server';
 
 /**
@@ -37,15 +38,15 @@ const generatePracticeProblemsPrompt = ai.definePrompt({
   output: {
     schema: GeneratePracticeProblemsOutputSchema,
   },
-  prompt: `You are a calculus teacher who is generating practice problems for your students.
+  prompt: `Eres un profesor de cálculo que está generando problemas de práctica para tus estudiantes.
 
-  Generate {{quantity}} practice problems for the following topic:
+  Genera {{quantity}} problemas de práctica para el siguiente tema:
 
   {{topic}}
 
-  Make sure the problems are diverse and cover a range of difficulties.
+  Asegúrate de que los problemas sean diversos y cubran un rango de dificultades.
 
-  The output MUST be a JSON array of strings, where each string is a practice problem.  Do not include any other text besides the JSON.
+  La salida DEBE ser un array JSON de strings, donde cada string es un problema de práctica. No incluyas ningún otro texto además del JSON.
   `,
 });
 

@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -7,15 +8,13 @@ import { useToast } from '@/hooks/use-toast';
 import { getPracticeProblems } from '@/app/actions';
 import { Loader2, Wand2 } from 'lucide-react';
 import { BMath } from './math';
-
-interface Problem {
-  text: string;
-}
+import { useLanguage } from '@/hooks/use-language';
 
 export function ProblemGenerator({ module }: { module: { id: string; title: string } }) {
   const [problems, setProblems] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const { language } = useLanguage();
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -29,7 +28,7 @@ export function ProblemGenerator({ module }: { module: { id: string; title: stri
     if (result.error) {
       toast({
         variant: 'destructive',
-        title: 'An error occurred',
+        title: language === 'es' ? 'Ocurrió un error' : 'An error occurred',
         description: result.error,
       });
     } else if (result.problems) {
@@ -37,11 +36,28 @@ export function ProblemGenerator({ module }: { module: { id: string; title: stri
     }
   };
 
+  const content = {
+    en: {
+      title: "Practice Problem Generator",
+      description: `Generate new problems for the topic of ${module.title} using AI.`,
+      placeholder: "Click the button to generate practice problems.",
+      buttonText: "Generate Problems"
+    },
+    es: {
+      title: "Generador de Problemas de Práctica",
+      description: `Genera nuevos problemas para el tema de ${module.title} usando IA.`,
+      placeholder: "Haz clic en el botón para generar problemas de práctica.",
+      buttonText: "Generar Problemas"
+    }
+  }
+
+  const { title, description, placeholder, buttonText } = content[language];
+
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Practice Problem Generator</CardTitle>
-        <CardDescription>Generate new problems for the topic of {module.title} using AI.</CardDescription>
+        <CardTitle>{title}</CardTitle>
+        <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent>
         {isLoading ? (
@@ -60,7 +76,7 @@ export function ProblemGenerator({ module }: { module: { id: string; title: stri
         ) : (
            <div className="flex flex-col items-center justify-center text-center text-muted-foreground h-40 border-2 border-dashed rounded-lg">
                 <Wand2 className="h-8 w-8 mb-2"/>
-                <p>Click the button to generate practice problems.</p>
+                <p>{placeholder}</p>
            </div>
         )}
       </CardContent>
@@ -71,7 +87,7 @@ export function ProblemGenerator({ module }: { module: { id: string; title: stri
           ) : (
             <Wand2 className="mr-2 h-4 w-4" />
           )}
-          Generate Problems
+          {buttonText}
         </Button>
       </CardFooter>
     </Card>

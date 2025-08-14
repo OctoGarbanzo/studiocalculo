@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useMemo } from 'react';
@@ -13,16 +14,18 @@ import {
   ReferenceLine,
   Dot,
 } from 'recharts';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Slider } from '@/components/ui/slider';
 import { Label } from '@/components/ui/label';
 import { BMath, IMath } from './math';
+import { useLanguage } from '@/hooks/use-language';
 
 const functionToGraph = (x: number) => 0.25 * x ** 2; // f(x) = 0.25x^2
 const derivative = (x: number) => 0.5 * x; // f'(x) = 0.5x
 
 export function InteractiveGraph() {
   const [x0, setX0] = useState(2);
+  const { language } = useLanguage();
 
   const data = useMemo(() => {
     const points = [];
@@ -52,10 +55,29 @@ export function InteractiveGraph() {
     return null;
   };
 
+  const content = {
+    en: {
+        title: "Tangent Line Simulation",
+        description: "The derivative of a function at a point is the slope of the tangent line at that point. Move the slider to see how the tangent line changes.",
+        sliderLabel: "Point of Tangency",
+        tangentLabel: "Tangent line at"
+    },
+    es: {
+        title: "Simulación de la Recta Tangente",
+        description: "La derivada de una función en un punto es la pendiente de la recta tangente en ese punto. Mueve el deslizador para ver cómo cambia la recta tangente.",
+        sliderLabel: "Punto de Tangencia",
+        tangentLabel: "Recta tangente en"
+    }
+  }
+
+  const { title, description, sliderLabel, tangentLabel } = content[language];
+
+
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Tangent Line Simulation</CardTitle>
+        <CardTitle>{title}</CardTitle>
+        <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
         <div className="h-96 w-full">
@@ -73,19 +95,19 @@ export function InteractiveGraph() {
                   borderColor: 'hsl(var(--border))',
                 }}
                 labelFormatter={(label) => `x = ${label}`}
-                 formatter={(value, name) => [value.toFixed(2), name === 'y' ? 'f(x)' : 'Tangent']}
+                 formatter={(value, name) => [value.toFixed(2), name === 'y' ? 'f(x)' : 'Tangente']}
               />
               <Legend />
               <ReferenceLine x={0} stroke="hsl(var(--border))" />
               <ReferenceLine y={0} stroke="hsl(var(--border))" />
               <Line type="monotone" dataKey="y" name="f(x) = 0.25x²" stroke="hsl(var(--primary))" strokeWidth={2} dot={false} />
-              <Line type="monotone" dataKey="tangent" name="Tangent Line" stroke="hsl(var(--accent-foreground))" strokeWidth={2} dot={<CustomDot/>} />
+              <Line type="monotone" dataKey="tangent" name={language === 'es' ? "Recta Tangente" : "Tangent Line"} stroke="hsl(var(--accent-foreground))" strokeWidth={2} dot={<CustomDot/>} />
             </LineChart>
           </ResponsiveContainer>
         </div>
         <div className="space-y-4">
           <div>
-            <Label htmlFor="x0-slider">Point of Tangency <IMath math={`x_0 = ${x0.toFixed(2)}`}/></Label>
+            <Label htmlFor="x0-slider">{sliderLabel} <IMath math={`x_0 = ${x0.toFixed(2)}`}/></Label>
             <Slider
               id="x0-slider"
               min={-10}
@@ -96,7 +118,7 @@ export function InteractiveGraph() {
             />
           </div>
           <div className='p-4 bg-muted rounded-md text-center'>
-            <p>Tangent line at <IMath math={`x_0=${x0.toFixed(2)}`}/>:</p>
+            <p>{tangentLabel} <IMath math={`x_0=${x0.toFixed(2)}`}/>:</p>
             <BMath>{tangentEquation}</BMath>
           </div>
         </div>

@@ -1,78 +1,262 @@
+
+'use client';
+
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { IMath, BMath } from './math';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { useLanguage } from '@/hooks/use-language';
+import { InteractiveGraph } from './interactive-graph';
 
-const InteractiveFormula = ({ formula, tooltipText }: { formula: string, tooltipText: string }) => (
-    <Tooltip>
-        <TooltipTrigger asChild>
-            <span className="font-code text-primary cursor-pointer underline decoration-dotted">
-                <IMath>{formula}</IMath>
-            </span>
-        </TooltipTrigger>
-        <TooltipContent>
-            <p>{tooltipText}</p>
-        </TooltipContent>
-    </Tooltip>
+const InteractiveFormula = ({ formula, tooltipText }: { formula: string; tooltipText: string }) => (
+  <Tooltip>
+    <TooltipTrigger asChild>
+      <span className="font-code text-primary cursor-pointer underline decoration-dotted">
+        <IMath>{formula}</IMath>
+      </span>
+    </TooltipTrigger>
+    <TooltipContent>
+      <p>{tooltipText}</p>
+    </TooltipContent>
+  </Tooltip>
 );
+
+const DerivativesTheory = () => {
+    const { language } = useLanguage();
+
+    const content = {
+        en: {
+            title: "Definition of the Derivative",
+            p1: "The derivative of a function of a single variable at a chosen input value, when it exists, is the slope of the tangent line to the graph of the function at that point. It is the instantaneous rate of change of the function.",
+            p2: "The derivative is formally defined using limits. The derivative of a function",
+            p3: "with respect to",
+            p4: "is the function",
+            p5: "given by:",
+            p6: "Let's break down this formula:",
+            li1: "The term",
+            li1_tt: "The change in the function's value (rise).",
+            li1_p2: "represents the change in the function's output as the input changes by a small amount",
+            li2: "The denominator",
+            li2_tt: "The change in the function's input (run).",
+            li2_p2: "is the change in the input value.",
+            li3: "The fraction represents the",
+            li3_tt: "Average rate of change, or slope of the secant line.",
+            li3_p2: "which is the average rate of change between the points",
+            li3_p3: "and",
+            li4: "The",
+            li4_tt: "The limit as h approaches zero.",
+            li4_p2: "operation finds the instantaneous rate of change by making the interval",
+            li4_p3: "infinitesimally small.",
+            rulesTitle: "Common Derivative Rules",
+            powerRule: "Power Rule",
+            powerRuleDef: "If",
+            powerRuleThen: "then",
+            constantRule: "Constant Rule",
+            sumDiffRule: "Sum/Difference Rule",
+            productRule: "Product Rule"
+        },
+        es: {
+            title: "Definición de la Derivada",
+            p1: "La derivada de una función de una sola variable en un valor de entrada elegido, cuando existe, es la pendiente de la recta tangente a la gráfica de la función en ese punto. Es la tasa de cambio instantánea de la función.",
+            p2: "La derivada se define formalmente usando límites. La derivada de una función",
+            p3: "con respecto a",
+            p4: "es la función",
+            p5: "dada por:",
+            p6: "Analicemos esta fórmula:",
+            li1: "El término",
+            li1_tt: "El cambio en el valor de la función (elevación).",
+            li1_p2: "representa el cambio en la salida de la función a medida que la entrada cambia en una pequeña cantidad",
+            li2: "El denominador",
+            li2_tt: "El cambio en el valor de entrada (recorrido).",
+            li2_p2: "es el cambio en el valor de entrada.",
+            li3: "La fracción representa la",
+            li3_tt: "Tasa de cambio promedio, o pendiente de la recta secante.",
+            li3_p2: "que es la tasa de cambio promedio entre los puntos",
+            li3_p3: "y",
+            li4: "La operación de",
+            li4_tt: "El límite cuando h se acerca a cero.",
+            li4_p2: "encuentra la tasa de cambio instantánea haciendo el intervalo",
+            li4_p3: "infinitesimalmente pequeño.",
+            rulesTitle: "Reglas Comunes de Derivación",
+            powerRule: "Regla de la Potencia",
+            powerRuleDef: "Si",
+            powerRuleThen: "entonces",
+            constantRule: "Regla de la Constante",
+            sumDiffRule: "Regla de la Suma/Diferencia",
+            productRule: "Regla del Producto"
+        }
+    }
+
+    const c = content[language];
+
+    return (<>
+        <Card>
+            <CardHeader>
+                <CardTitle>{c.title}</CardTitle>
+            </CardHeader>
+            <CardContent className="prose prose-lg dark:prose-invert max-w-none space-y-4">
+                <p>{c.p1}</p>
+                <p>
+                    {c.p2} <IMath>f(x)</IMath> {c.p3} <IMath>x</IMath> {c.p4} <IMath>f'(x)</IMath> {c.p5}
+                </p>
+                <div className="bg-muted p-4 rounded-lg text-center">
+                    <BMath>
+                        {`f'(x) = \\lim_{h \\to 0} \\frac{f(x+h) - f(x)}{h}`}
+                    </BMath>
+                </div>
+                <div>
+                    <p>{c.p6}</p>
+                    <ul className='list-disc pl-6 space-y-2 mt-2'>
+                        <li>{c.li1} <InteractiveFormula formula="f(x+h) - f(x)" tooltipText={c.li1_tt} /> {c.li1_p2} <IMath>h</IMath>.</li>
+                        <li>{c.li2} <InteractiveFormula formula="h" tooltipText={c.li2_tt} /> {c.li2_p2}</li>
+                        <li>{c.li3} <InteractiveFormula formula="\frac{\Delta y}{\Delta x}" tooltipText={c.li3_tt} />, {c.li3_p2} <IMath>(x, f(x))</IMath> {c.li3_p3} <IMath>(x+h, f(x+h))</IMath>.</li>
+                        <li>{c.li4} <InteractiveFormula formula="\lim_{h \to 0}" tooltipText={c.li4_tt} /> {c.li4_p2} <IMath>h</IMath> {c.li4_p3}</li>
+                    </ul>
+                </div>
+            </CardContent>
+        </Card>
+
+        <Card>
+            <CardHeader>
+                <CardTitle>{c.rulesTitle}</CardTitle>
+            </CardHeader>
+            <CardContent className="prose dark:prose-invert max-w-none">
+                <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <h4 className="font-semibold">{c.powerRule}</h4>
+                        <p>{c.powerRuleDef} <IMath>{`f(x) = x^n`}</IMath>, {c.powerRuleThen} <IMath>{`f'(x) = nx^{n-1}`}</IMath>.</p>
+                    </div>
+                     <div>
+                        <h4 className="font-semibold">{c.constantRule}</h4>
+                        <p>{c.powerRuleDef} <IMath>f(x) = c</IMath>, {c.powerRuleThen} <IMath>f'(x) = 0</IMath>.</p>
+                    </div>
+                    <div>
+                        <h4 className="font-semibold">{c.sumDiffRule}</h4>
+                        <p>{c.powerRuleDef} <IMath>{`h(x) = f(x) \\pm g(x)`}</IMath>, {c.powerRuleThen} <IMath>{`h'(x) = f'(x) \\pm g'(x)`}</IMath>.</p>
+                    </div>
+                    <div>
+                        <h4 className="font-semibold">{c.productRule}</h4>
+                        <p>{c.powerRuleDef} <IMath>h(x) = f(x)g(x)</IMath>, {c.powerRuleThen} <IMath>{`h'(x) = f'(x)g(x) + f(x)g'(x)`}</IMath>.</p>
+                    </div>
+                </div>
+            </CardContent>
+        </Card>
+    </>)
+}
+
+
+const LimitsTheory = () => {
+    const { language } = useLanguage();
+
+    const content = {
+        en: {
+            title: "Definition of a Limit",
+            p1: "In mathematics, a limit is the value that a function (or sequence) approaches as the input (or index) approaches some value. Limits are essential to calculus and mathematical analysis, and are used to define continuity, derivatives, and integrals.",
+            p2: "The limit of a function",
+            p3: "as",
+            p4: "approaches",
+            p5: "is written as:",
+            p6: "This means that the value of",
+            p7: "can be made arbitrarily close to",
+            p8: "by taking",
+            p9: "sufficiently close to",
+            p10: "Let's look at an example:",
+            p11: "As",
+            p12: "gets closer and closer to 2, the function",
+            p13: "gets closer and closer to 4. Therefore, we say:",
+            continuityTitle: "Continuity",
+            continuityP1: "A function is continuous at a point if the limit exists at that point, the function is defined at that point, and the limit is equal to the function's value.",
+            continuityP2: "Formally, a function",
+            continuityP3: "is continuous at a point",
+            continuityP4: "if all three of the following conditions are met:",
+            cond1: "is defined (i.e.,",
+            cond1_p2: "is in the domain of",
+            cond2: "exists.",
+            cond3: ""
+        },
+        es: {
+            title: "Definición de un Límite",
+            p1: "En matemáticas, un límite es el valor al que se aproxima una función (o secuencia) a medida que la entrada (o índice) se aproxima a algún valor. Los límites son esenciales para el cálculo y el análisis matemático, y se utilizan para definir continuidad, derivadas e integrales.",
+            p2: "El límite de una función",
+            p3: "cuando",
+            p4: "se aproxima a",
+            p5: "se escribe como:",
+            p6: "Esto significa que el valor de",
+            p7: "puede hacerse arbitrariamente cercano a",
+            p8: "tomando",
+            p9: "suficientemente cerca de",
+            p10: "Veamos un ejemplo:",
+            p11: "A medida que",
+            p12: "se acerca más y más a 2, la función",
+            p13: "se acerca más y más a 4. Por lo tanto, decimos:",
+            continuityTitle: "Continuidad",
+            continuityP1: "Una función es continua en un punto si el límite existe en ese punto, la función está definida en ese punto y el límite es igual al valor de la función.",
+            continuityP2: "Formalmente, una función",
+            continuityP3: "es continua en un punto",
+            continuityP4: "si se cumplen las tres condiciones siguientes:",
+            cond1: "está definida (es decir,",
+            cond1_p2: "está en el dominio de",
+            cond2: "existe.",
+            cond3: ""
+        }
+    }
+
+    const c = content[language];
+
+    return (<>
+        <Card>
+            <CardHeader>
+                <CardTitle>{c.title}</CardTitle>
+            </CardHeader>
+            <CardContent className="prose prose-lg dark:prose-invert max-w-none space-y-4">
+                <p>{c.p1}</p>
+                <p>
+                    {c.p2} <IMath>f(x)</IMath> {c.p3} <IMath>x</IMath> {c.p4} <IMath>c</IMath> {c.p5}
+                </p>
+                <div className="bg-muted p-4 rounded-lg text-center">
+                    <BMath>
+                        {`\\lim_{x \\to c} f(x) = L`}
+                    </BMath>
+                </div>
+                <p>
+                    {c.p6} <IMath>f(x)</IMath> {c.p7} <IMath>L</IMath> {c.p8} <IMath>x</IMath> {c.p9} <IMath>c</IMath>.
+                </p>
+                 <p>{c.p10}</p>
+                <div className="bg-muted p-4 rounded-lg text-center">
+                    <BMath>{`\\lim_{x \\to 2} x^2`}</BMath>
+                </div>
+                <p>
+                    {c.p11} <IMath>x</IMath> {c.p12} <IMath>f(x) = x^2</IMath> {c.p13}
+                </p>
+                <div className="bg-muted p-4 rounded-lg text-center">
+                     <BMath>{`\\lim_{x \\to 2} x^2 = 4`}</BMath>
+                </div>
+            </CardContent>
+        </Card>
+
+        <Card>
+            <CardHeader>
+                <CardTitle>{c.continuityTitle}</CardTitle>
+            </CardHeader>
+            <CardContent className="prose dark:prose-invert max-w-none space-y-4">
+                <p>{c.continuityP1}</p>
+                <p>{c.continuityP2} <IMath>f</IMath> {c.continuityP3} <IMath>x=c</IMath> {c.continuityP4}</p>
+                 <ol className='list-decimal pl-6 space-y-2 mt-2'>
+                    <li><IMath>f(c)</IMath> {c.cond1} <IMath>c</IMath> {c.cond1_p2} <IMath>f</IMath>).</li>
+                    <li><IMath>{`\\lim_{x \\to c} f(x)`}</IMath> {c.cond2}</li>
+                    <li><IMath>{`\\lim_{x \\to c} f(x) = f(c)`}</IMath>.</li>
+                </ol>
+            </CardContent>
+        </Card>
+    </>)
+}
 
 export function TheoryTab({ module }: { module: { id: string; title: string } }) {
   return (
     <TooltipProvider>
-        <div className="space-y-8">
-            <Card>
-                <CardHeader>
-                    <CardTitle>Definition of the Derivative</CardTitle>
-                </CardHeader>
-                <CardContent className="prose prose-lg dark:prose-invert max-w-none space-y-4">
-                    <p>
-                        The derivative of a function of a single variable at a chosen input value, when it exists, is the slope of the tangent line to the graph of the function at that point. It is the instantaneous rate of change of the function.
-                    </p>
-                    <p>
-                        The derivative is formally defined using limits. The derivative of a function <IMath>f(x)</IMath> with respect to <IMath>x</IMath> is the function <IMath>f'(x)</IMath> given by:
-                    </p>
-                    <div className="bg-muted p-4 rounded-lg text-center">
-                        <BMath>
-                            {`f'(x) = \\lim_{h \\to 0} \\frac{f(x+h) - f(x)}{h}`}
-                        </BMath>
-                    </div>
-                     <p>
-                        Let's break down this formula:
-                    </p>
-                    <ul className='list-disc pl-6 space-y-2 mt-2'>
-                        <li>The term <InteractiveFormula formula="f(x+h) - f(x)" tooltipText="The change in the function's value (rise)." /> represents the change in the function's output as the input changes by a small amount <IMath>h</IMath>.</li>
-                        <li>The denominator <InteractiveFormula formula="h" tooltipText="The change in the function's input (run)." /> is the change in the input value.</li>
-                        <li>The fraction represents the <InteractiveFormula formula="\frac{\Delta y}{\Delta x}" tooltipText="Average rate of change, or slope of the secant line." />, which is the average rate of change between the points <IMath>(x, f(x))</IMath> and <IMath>(x+h, f(x+h))</IMath>.</li>
-                        <li>The <InteractiveFormula formula="\lim_{h \to 0}" tooltipText="The limit as h approaches zero." /> operation finds the instantaneous rate of change by making the interval <IMath>h</IMath> infinitesimally small.</li>
-                    </ul>
-                </CardContent>
-            </Card>
-
-            <Card>
-                <CardHeader>
-                    <CardTitle>Common Derivative Rules</CardTitle>
-                </CardHeader>
-                <CardContent className="prose dark:prose-invert max-w-none">
-                    <div className="grid md:grid-cols-2 gap-4">
-                        <div>
-                            <h4 className="font-semibold">Power Rule</h4>
-                            <p>If <IMath>{`f(x) = x^n`}</IMath>, then <IMath>{`f'(x) = nx^{n-1}`}</IMath>.</p>
-                        </div>
-                         <div>
-                            <h4 className="font-semibold">Constant Rule</h4>
-                            <p>If <IMath>f(x) = c</IMath>, then <IMath>f'(x) = 0</IMath>.</p>
-                        </div>
-                        <div>
-                            <h4 className="font-semibold">Sum/Difference Rule</h4>
-                            <p>If <IMath>{`h(x) = f(x) \\pm g(x)`}</IMath>, then <IMath>{`h'(x) = f'(x) \\pm g'(x)`}</IMath>.</p>
-                        </div>
-                        <div>
-                            <h4 className="font-semibold">Product Rule</h4>
-                            <p>If <IMath>h(x) = f(x)g(x)</IMath>, then <IMath>{`h'(x) = f'(x)g(x) + f(x)g'(x)`}</IMath>.</p>
-                        </div>
-                    </div>
-                </CardContent>
-            </Card>
-        </div>
+      <div className="space-y-8">
+        {module.id === 'derivatives' && <DerivativesTheory />}
+        {module.id === 'limits' && <LimitsTheory />}
+      </div>
     </TooltipProvider>
   );
 }
