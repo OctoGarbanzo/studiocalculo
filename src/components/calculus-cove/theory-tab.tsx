@@ -108,8 +108,8 @@ const DerivativesTheory = () => {
                     <ul className='list-disc pl-6 space-y-2 mt-2'>
                         <li>{c.li1} <InteractiveFormula formula="f(x+h) - f(x)" tooltipText={c.li1_tt} /> {c.li1_p2} <IMath>h</IMath>.</li>
                         <li>{c.li2} <InteractiveFormula formula="h" tooltipText={c.li2_tt} /> {c.li2_p2}</li>
-                        <li>{c.li3} <InteractiveFormula formula="\frac{\Delta y}{\Delta x}" tooltipText={c.li3_tt} />, {c.li3_p2} <IMath>(x, f(x))</IMath> {c.li3_p3} <IMath>(x+h, f(x+h))</IMath>.</li>
-                        <li>{c.li4} <InteractiveFormula formula="\lim_{h \to 0}" tooltipText={c.li4_tt} /> {c.li4_p2} <IMath>h</IMath> {c.li4_p3}</li>
+                        <li>{c.li3} <InteractiveFormula formula="\\frac{\\Delta y}{\\Delta x}" tooltipText={c.li3_tt} />, {c.li3_p2} <IMath>(x, f(x))</IMath> {c.li3_p3} <IMath>(x+h, f(x+h))</IMath>.</li>
+                        <li>{c.li4} <InteractiveFormula formula="\\lim_{h \\to 0}" tooltipText={c.li4_tt} /> {c.li4_p2} <IMath>h</IMath> {c.li4_p3}</li>
                     </ul>
                 </div>
             </CardContent>
