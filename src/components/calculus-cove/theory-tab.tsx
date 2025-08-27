@@ -202,7 +202,7 @@ const TrigIdentities = () => {
             </CardContent>
         </Card>
     );
-}
+};
 
 const LimitsTheory = () => {
     const { language } = useLanguage();
@@ -413,3 +413,5 @@ export function TheoryTab({ module }: { module: { id: string; title: string } })
     </TooltipProvider>
   );
 }
+
+    
