@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { IMath, BMath } from './math';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { useLanguage } from '@/hooks/use-language';
+import { TrigLimitSolutions } from './trig-limit-solutions';
 
 const TrigIdentities = () => {
     const { language } = useLanguage();
@@ -190,6 +191,8 @@ const TrigLimitsTheory = () => {
                 </ol>
             </CardContent>
         </Card>
+
+        <TrigLimitSolutions />
     </>)
 }
 
