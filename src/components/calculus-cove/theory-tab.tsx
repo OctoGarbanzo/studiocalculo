@@ -8,16 +8,16 @@ import { useLanguage } from '@/hooks/use-language';
 import { InteractiveGraph } from './interactive-graph';
 
 const InteractiveFormula = ({ formula, tooltipText }: { formula: string; tooltipText: string }) => (
-  <Tooltip>
-    <TooltipTrigger asChild>
-      <span className="font-code text-primary cursor-pointer underline decoration-dotted">
-        <IMath>{formula}</IMath>
-      </span>
-    </TooltipTrigger>
-    <TooltipContent>
-      <p>{tooltipText}</p>
-    </TooltipContent>
-  </Tooltip>
+    <Tooltip>
+        <TooltipTrigger asChild>
+        <span className="font-code text-primary cursor-pointer underline decoration-dotted">
+            <IMath>{formula}</IMath>
+        </span>
+        </TooltipTrigger>
+        <TooltipContent>
+        <p>{tooltipText}</p>
+        </TooltipContent>
+    </Tooltip>
 );
 
 const DerivativesTheory = () => {
