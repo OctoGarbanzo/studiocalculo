@@ -6,6 +6,7 @@ import { TheoryTab } from './theory-tab';
 import { PracticeTab } from './practice-tab';
 import { QuizTab } from './quiz-tab';
 import { useLanguage } from '@/hooks/use-language';
+import { TrigLimitsContent } from './trig-limits-content';
 
 type Module = {
   id: string;
@@ -16,6 +17,10 @@ type Module = {
 
 export function ModuleContent({ module }: { module: Module }) {
   const { language } = useLanguage();
+
+  if (module.id === 'trig-limits') {
+    return <TrigLimitsContent module={module} />;
+  }
 
   if (module.comingSoon) {
       return (
