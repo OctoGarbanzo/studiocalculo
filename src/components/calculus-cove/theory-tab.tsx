@@ -107,8 +107,8 @@ const DerivativesTheory = () => {
                     <ul className='list-disc pl-6 space-y-2 mt-2'>
                         <li>{c.li1} <InteractiveFormula formula="f(x+h) - f(x)" tooltipText={c.li1_tt} /> {c.li1_p2} <IMath>h</IMath>.</li>
                         <li>{c.li2} <InteractiveFormula formula="h" tooltipText={c.li2_tt} /> {c.li2_p2}</li>
-                        <li>{c.li3} <InteractiveFormula formula="\frac{\Delta y}{\Delta x}" tooltipText={c.li3_tt} />, {c.li3_p2} <IMath>(x, f(x))</IMath> {c.li3_p3} <IMath>(x+h, f(x+h))</IMath>.</li>
-                        <li>{c.li4} <InteractiveFormula formula="\lim_{h \to 0}" tooltipText={c.li4_tt} /> {c.li4_p2} <IMath>h</IMath> {c.li4_p3}</li>
+                        <li>{c.li3} <InteractiveFormula formula="\\frac{\\Delta y}{\\Delta x}" tooltipText={c.li3_tt} />, {c.li3_p2} <IMath>(x, f(x))</IMath> {c.li3_p3} <IMath>(x+h, f(x+h))</IMath>.</li>
+                        <li>{c.li4} <InteractiveFormula formula="\\lim_{h \\to 0}" tooltipText={c.li4_tt} /> {c.li4_p2} <IMath>h</IMath> {c.li4_p3}</li>
                     </ul>
                 </div>
             </CardContent>
@@ -150,14 +150,18 @@ const TrigIdentities = () => {
             pitagoricas: "Pythagorean",
             doble: "Double Angle",
             reciprocas: "Reciprocal",
-            paridad: "Parity"
+            paridad: "Parity/Symmetry",
+            complementarios: "Complementary Angles",
+            sumaResta: "Sum and Difference of Angles",
         },
         es: {
             title: "Identidades Trigonométricas",
             pitagoricas: "Pitagóricas",
             doble: "Ángulo Doble",
             reciprocas: "Recíprocas",
-            paridad: "Paridad"
+            paridad: "Paridad e imparidad",
+            complementarios: "Ángulos Complementarios",
+            sumaResta: "Suma y Resta de Ángulos",
         }
     }
     const c = content[language];
@@ -167,34 +171,52 @@ const TrigIdentities = () => {
                 <CardTitle>{c.title}</CardTitle>
             </CardHeader>
             <CardContent className="prose dark:prose-invert max-w-none">
-                <div className="grid md:grid-cols-2 gap-x-8 gap-y-4">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4">
                     <div>
                         <h4 className="font-semibold">{c.pitagoricas}</h4>
-                        <ul className='list-disc pl-6'>
+                        <ul className='list-disc pl-6 space-y-2'>
                             <li><BMath>{`\\cos^2(\\alpha) + \\sin^2(\\alpha) = 1`}</BMath></li>
                             <li><BMath>{`1 + \\tan^2(\\alpha) = \\sec^2(\\alpha)`}</BMath></li>
+                            <li><BMath>{`\\cot^2(\\alpha) + 1 = \\csc^2(\\alpha)`}</BMath></li>
                         </ul>
                     </div>
                      <div>
                         <h4 className="font-semibold">{c.doble}</h4>
-                         <ul className='list-disc pl-6'>
+                         <ul className='list-disc pl-6 space-y-2'>
                             <li><BMath>{`\\sin(2\\alpha) = 2\\sin(\\alpha)\\cos(\\alpha)`}</BMath></li>
                             <li><BMath>{`\\cos(2\\alpha) = \\cos^2(\\alpha) - \\sin^2(\\alpha)`}</BMath></li>
                         </ul>
                     </div>
-                    <div>
-                        <h4 className="font-semibold">{c.reciprocas}</h4>
-                         <ul className='list-disc pl-6'>
-                            <li><IMath>{`\\csc(\\alpha) = 1/\\sin(\\alpha)`}</IMath></li>
-                            <li><IMath>{`\\sec(\\alpha) = 1/\\cos(\\alpha)`}</IMath></li>
-                            <li><IMath>{`\\cot(\\alpha) = 1/\\tan(\\alpha)`}</IMath></li>
+                     <div>
+                        <h4 className="font-semibold">{c.complementarios}</h4>
+                        <ul className='list-disc pl-6 space-y-2'>
+                           <li><IMath>{`\\sin(\\frac{\\pi}{2} - \\alpha) = \\cos(\\alpha)`}</IMath></li>
+                           <li><IMath>{`\\cos(\\frac{\\pi}{2} - \\alpha) = \\sin(\\alpha)`}</IMath></li>
+                           <li><IMath>{`\\tan(\\frac{\\pi}{2} - \\alpha) = \\cot(\\alpha)`}</IMath></li>
                         </ul>
                     </div>
                      <div>
                         <h4 className="font-semibold">{c.paridad}</h4>
-                        <ul className='list-disc pl-6'>
+                        <ul className='list-disc pl-6 space-y-2'>
                            <li><IMath>{`\\sin(-\\alpha) = -\\sin(\\alpha)`}</IMath></li>
                            <li><IMath>{`\\cos(-\\alpha) = \\cos(\\alpha)`}</IMath></li>
+                           <li><IMath>{`\\tan(-\\alpha) = -\\tan(\\alpha)`}</IMath></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 className="font-semibold">{c.reciprocas}</h4>
+                         <ul className='list-disc pl-6 space-y-2'>
+                            <li><IMath>{`\\csc(\\alpha) = \\frac{1}{\\sin(\\alpha)}`}</IMath></li>
+                            <li><IMath>{`\\sec(\\alpha) = \\frac{1}{\\cos(\\alpha)}`}</IMath></li>
+                            <li><IMath>{`\\cot(\\alpha) = \\frac{1}{\\tan(\\alpha)}`}</IMath></li>
+                             <li><IMath>{`\\tan(\\alpha) = \\frac{\\sin(\\alpha)}{\\cos(\\alpha)}`}</IMath></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 className="font-semibold">{c.sumaResta}</h4>
+                         <ul className='list-disc pl-6 space-y-2'>
+                            <li><BMath>{`\\sin(\\alpha \\pm \\beta) = \\sin(\\alpha)\\cos(\\beta) \\pm \\cos(\\alpha)\\sin(\\beta)`}</BMath></li>
+                            <li><BMath>{`\\cos(\\alpha \\pm \\beta) = \\cos(\\alpha)\\cos(\\beta) \\mp \\sin(\\alpha)\\sin(\\beta)`}</BMath></li>
                         </ul>
                     </div>
                 </div>
@@ -223,7 +245,7 @@ const LimitsTheory = () => {
             p12: "gets closer and closer to 2, the function",
             p13: "gets closer and closer to 4. Therefore, we say:",
             continuityTitle: "Continuity",
-            continuityP1: "A function's continuity can be informally understood as the ability to draw its graph without lifting the pen. Formally, it relates to the behavior of the function around a point.",
+            continuityP1: "The continuity of a function on an interval can be exemplified as drawing the graph of said function with a pencil without lifting it. Informally, it means that the graph has no breaks, holes, or jumps.",
             continuityP2: "A function",
             continuityP3: "is continuous at a point",
             continuityP4: "if all three of the following conditions are met:",
@@ -239,8 +261,8 @@ const LimitsTheory = () => {
             oneSidedP5: "to exist, the limit from the left and the limit from the right must both exist and be equal.",
             specialLimitsTitle: "Special Trigonometric Limits",
             specialLimitsP1: "There are special trigonometric limits that are fundamental in calculus. They are used to solve limits involving trigonometric functions, especially indeterminate forms.",
-            squeezeTitle: "Squeeze Theorem",
-            squeezeP1: "The Squeeze Theorem (or Sandwich Theorem) is used to find the limit of a function by comparing it to two other functions whose limits are known.",
+            squeezeTitle: "Squeeze Theorem (Intercalation Theorem)",
+            squeezeP1: "The Squeeze Theorem is used to find the limit of a function by comparing it to two other functions whose limits are known.",
             squeezeP2: "If",
             squeezeP3: "for all x in an open interval containing c (except possibly at c itself), and if",
             squeezeP4: "then",
@@ -261,7 +283,7 @@ const LimitsTheory = () => {
             p12: "se acerca más y más a 2, la función",
             p13: "se acerca más y más a 4. Por lo tanto, decimos:",
             continuityTitle: "Continuidad",
-            continuityP1: "La continuidad de una función en un intervalo puede ejemplifcarse como un trazo con un lápiz, sin levantarlo. Formalmente, se relaciona con el comportamiento de la función alrededor de un punto.",
+            continuityP1: "La continuidad de una función en un intervalo puede ejemplifcarse como un trazo con un lápiz, sin levantarlo, de la gráfica de dicha función. De manera informal entonces es que la gráfica no tenga rupturas, huecos o saltos.",
             continuityP2: "Una función",
             continuityP3: "es continua en un punto",
             continuityP4: "si se cumplen las tres condiciones siguientes:",
@@ -280,8 +302,8 @@ const LimitsTheory = () => {
             squeezeTitle: "Teorema de Intercalación (o del Sándwich)",
             squeezeP1: "El Teorema de Intercalación se utiliza para encontrar el límite de una función comparándola con otras dos funciones cuyos límites son conocidos.",
             squeezeP2: "Si",
-            squeezeP3: "para todo x en un intervalo abierto que contiene a c (excepto posiblemente en c mismo), y si",
-            squeezeP4: "entonces",
+            squeezeP3: "para todo x en un intervalo abierto que contiene a c (excepto posiblemente en c mismo), y si se cumple que",
+            squeezeP4: "entonces:",
         }
     }
 
@@ -359,11 +381,6 @@ const LimitsTheory = () => {
                         </div>
                     </li>
                      <li>
-                         <div className="bg-muted p-4 rounded-lg text-center">
-                             <BMath>{`\\lim_{x \\to 0} \\frac{1 - \\cos(x)}{x^2} = \\frac{1}{2}`}</BMath>
-                        </div>
-                    </li>
-                    <li>
                          <div className="bg-muted p-4 rounded-lg text-center">
                              <BMath>{`\\lim_{x \\to 0} \\frac{\\tan(x)}{x} = 1`}</BMath>
                         </div>
