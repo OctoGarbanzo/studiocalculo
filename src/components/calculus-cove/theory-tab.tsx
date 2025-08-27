@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -108,8 +107,8 @@ const DerivativesTheory = () => {
                     <ul className='list-disc pl-6 space-y-2 mt-2'>
                         <li>{c.li1} <InteractiveFormula formula="f(x+h) - f(x)" tooltipText={c.li1_tt} /> {c.li1_p2} <IMath>h</IMath>.</li>
                         <li>{c.li2} <InteractiveFormula formula="h" tooltipText={c.li2_tt} /> {c.li2_p2}</li>
-                        <li>{c.li3} <InteractiveFormula formula="\\frac{\\Delta y}{\\Delta x}" tooltipText={c.li3_tt} />, {c.li3_p2} <IMath>(x, f(x))</IMath> {c.li3_p3} <IMath>(x+h, f(x+h))</IMath>.</li>
-                        <li>{c.li4} <InteractiveFormula formula="\\lim_{h \\to 0}" tooltipText={c.li4_tt} /> {c.li4_p2} <IMath>h</IMath> {c.li4_p3}</li>
+                        <li>{c.li3} <InteractiveFormula formula="\frac{\Delta y}{\Delta x}" tooltipText={c.li3_tt} />, {c.li3_p2} <IMath>(x, f(x))</IMath> {c.li3_p3} <IMath>(x+h, f(x+h))</IMath>.</li>
+                        <li>{c.li4} <InteractiveFormula formula="\lim_{h \to 0}" tooltipText={c.li4_tt} /> {c.li4_p2} <IMath>h</IMath> {c.li4_p3}</li>
                     </ul>
                 </div>
             </CardContent>
@@ -379,7 +378,7 @@ const LimitsTheory = () => {
             </CardHeader>
             <CardContent className="prose dark:prose-invert max-w-none space-y-4">
                 <p>{c.squeezeP1}</p>
-                <p>{c.squeezeP2} <IMath>h(x) \\le f(x) \\le g(x)</IMath> {c.squeezeP3} <IMath>\\lim_{x \\to c} h(x) = \\lim_{x \\to c} g(x) = L</IMath>, {c.squeezeP4}</p>
+                <p>{c.squeezeP2} <IMath>h(x) \le f(x) \le g(x)</IMath> {c.squeezeP3} <IMath>{"\\lim_{x \\to c} h(x) = \\lim_{x \\to c} g(x) = L"}</IMath>, {c.squeezeP4}</p>
                 <div className="bg-muted p-4 rounded-lg text-center">
                     <BMath>{`\\lim_{x \\to c} f(x) = L`}</BMath>
                 </div>
@@ -413,5 +412,3 @@ export function TheoryTab({ module }: { module: { id: string; title: string } })
     </TooltipProvider>
   );
 }
-
-    
