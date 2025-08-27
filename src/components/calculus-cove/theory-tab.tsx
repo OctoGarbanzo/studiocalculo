@@ -143,6 +143,66 @@ const DerivativesTheory = () => {
     </>)
 }
 
+const TrigIdentities = () => {
+    const { language } = useLanguage();
+    const content = {
+        en: {
+            title: "Trigonometric Identities",
+            pitagoricas: "Pythagorean",
+            doble: "Double Angle",
+            reciprocas: "Reciprocal",
+            paridad: "Parity"
+        },
+        es: {
+            title: "Identidades Trigonométricas",
+            pitagoricas: "Pitagóricas",
+            doble: "Ángulo Doble",
+            reciprocas: "Recíprocas",
+            paridad: "Paridad"
+        }
+    }
+    const c = content[language];
+    return (
+        <Card>
+            <CardHeader>
+                <CardTitle>{c.title}</CardTitle>
+            </CardHeader>
+            <CardContent className="prose dark:prose-invert max-w-none">
+                <div className="grid md:grid-cols-2 gap-x-8 gap-y-4">
+                    <div>
+                        <h4 className="font-semibold">{c.pitagoricas}</h4>
+                        <ul className='list-disc pl-6'>
+                            <li><BMath>{`\\cos^2(\\alpha) + \\sin^2(\\alpha) = 1`}</BMath></li>
+                            <li><BMath>{`1 + \\tan^2(\\alpha) = \\sec^2(\\alpha)`}</BMath></li>
+                        </ul>
+                    </div>
+                     <div>
+                        <h4 className="font-semibold">{c.doble}</h4>
+                         <ul className='list-disc pl-6'>
+                            <li><BMath>{`\\sin(2\\alpha) = 2\\sin(\\alpha)\\cos(\\alpha)`}</BMath></li>
+                            <li><BMath>{`\\cos(2\\alpha) = \\cos^2(\\alpha) - \\sin^2(\\alpha)`}</BMath></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 className="font-semibold">{c.reciprocas}</h4>
+                         <ul className='list-disc pl-6'>
+                            <li><IMath>{`\\csc(\\alpha) = 1/\\sin(\\alpha)`}</IMath></li>
+                            <li><IMath>{`\\sec(\\alpha) = 1/\\cos(\\alpha)`}</IMath></li>
+                            <li><IMath>{`\\cot(\\alpha) = 1/\\tan(\\alpha)`}</IMath></li>
+                        </ul>
+                    </div>
+                     <div>
+                        <h4 className="font-semibold">{c.paridad}</h4>
+                        <ul className='list-disc pl-6'>
+                           <li><IMath>{`\\sin(-\\alpha) = -\\sin(\\alpha)`}</IMath></li>
+                           <li><IMath>{`\\cos(-\\alpha) = \\cos(\\alpha)`}</IMath></li>
+                        </ul>
+                    </div>
+                </div>
+            </CardContent>
+        </Card>
+    );
+}
 
 const LimitsTheory = () => {
     const { language } = useLanguage();
@@ -164,14 +224,14 @@ const LimitsTheory = () => {
             p12: "gets closer and closer to 2, the function",
             p13: "gets closer and closer to 4. Therefore, we say:",
             continuityTitle: "Continuity",
-            continuityP1: "A function is continuous at a point if the limit exists at that point, the function is defined at that point, and the limit is equal to the function's value.",
-            continuityP2: "Formally, a function",
+            continuityP1: "A function's continuity can be informally understood as the ability to draw its graph without lifting the pen. Formally, it relates to the behavior of the function around a point.",
+            continuityP2: "A function",
             continuityP3: "is continuous at a point",
             continuityP4: "if all three of the following conditions are met:",
             cond1: "is defined (i.e.,",
             cond1_p2: "is in the domain of",
             cond2: "exists.",
-            cond3: "",
+            cond3: "The limit equals the function's value:",
             oneSidedTitle: "One-Sided Limits",
             oneSidedP1: "Sometimes we are interested in the behavior of a function as it approaches a point from only one side. This leads to the concept of one-sided limits.",
             oneSidedP2: "The limit from the right means that x approaches c from values greater than c. It is denoted as:",
@@ -179,7 +239,12 @@ const LimitsTheory = () => {
             oneSidedP4: "For the two-sided limit",
             oneSidedP5: "to exist, the limit from the left and the limit from the right must both exist and be equal.",
             specialLimitsTitle: "Special Trigonometric Limits",
-            specialLimitsP1: "There are two special trigonometric limits that are fundamental in calculus:",
+            specialLimitsP1: "There are special trigonometric limits that are fundamental in calculus. They are used to solve limits involving trigonometric functions, especially indeterminate forms.",
+            squeezeTitle: "Squeeze Theorem",
+            squeezeP1: "The Squeeze Theorem (or Sandwich Theorem) is used to find the limit of a function by comparing it to two other functions whose limits are known.",
+            squeezeP2: "If",
+            squeezeP3: "for all x in an open interval containing c (except possibly at c itself), and if",
+            squeezeP4: "then",
         },
         es: {
             title: "Definición de un Límite",
@@ -197,22 +262,27 @@ const LimitsTheory = () => {
             p12: "se acerca más y más a 2, la función",
             p13: "se acerca más y más a 4. Por lo tanto, decimos:",
             continuityTitle: "Continuidad",
-            continuityP1: "Una función es continua en un punto si el límite existe en ese punto, la función está definida en ese punto y el límite es igual al valor de la función.",
-            continuityP2: "Formalmente, una función",
+            continuityP1: "La continuidad de una función en un intervalo puede ejemplifcarse como un trazo con un lápiz, sin levantarlo. Formalmente, se relaciona con el comportamiento de la función alrededor de un punto.",
+            continuityP2: "Una función",
             continuityP3: "es continua en un punto",
             continuityP4: "si se cumplen las tres condiciones siguientes:",
             cond1: "está definida (es decir,",
             cond1_p2: "está en el dominio de",
             cond2: "existe.",
-            cond3: "",
+            cond3: "El límite es igual al valor de la función:",
             oneSidedTitle: "Límites Laterales",
             oneSidedP1: "A veces nos interesa el comportamiento de una función a medida que se acerca a un punto desde un solo lado. Esto lleva al concepto de límites laterales.",
             oneSidedP2: "El límite por la derecha significa que x se aproxima a c desde valores mayores que c. Se denota como:",
             oneSidedP3: "El límite por la izquierda significa que x se aproxima a c desde valores menores que c. Se denota como:",
-            oneSidedP4: "Para que el límite bilaterial",
+            oneSidedP4: "Para que el límite bilateral",
             oneSidedP5: "exista, el límite por la izquierda y el límite por la derecha deben existir y ser iguales.",
             specialLimitsTitle: "Límites Trigonométricos Especiales",
-            specialLimitsP1: "Hay dos límites trigonométricos especiales que son fundamentales en el cálculo:",
+            specialLimitsP1: "Existen límites trigonométricos especiales que son fundamentales en el cálculo. Se utilizan para resolver límites que involucran funciones trigonométricas, especialmente en formas indeterminadas.",
+            squeezeTitle: "Teorema de Intercalación (o del Sándwich)",
+            squeezeP1: "El Teorema de Intercalación se utiliza para encontrar el límite de una función comparándola con otras dos funciones cuyos límites son conocidos.",
+            squeezeP2: "Si",
+            squeezeP3: "para todo x en un intervalo abierto que contiene a c (excepto posiblemente en c mismo), y si",
+            squeezeP4: "entonces",
         }
     }
 
@@ -248,6 +318,8 @@ const LimitsTheory = () => {
                 </div>
             </CardContent>
         </Card>
+        
+        <TrigIdentities />
 
         <Card>
             <CardHeader>
@@ -287,7 +359,25 @@ const LimitsTheory = () => {
                              <BMath>{`\\lim_{x \\to 0} \\frac{1 - \\cos(x)}{x} = 0`}</BMath>
                         </div>
                     </li>
+                    <li>
+                         <div className="bg-muted p-4 rounded-lg text-center">
+                             <BMath>{`\\lim_{x \\to 0} \\frac{\\tan(x)}{x} = 1`}</BMath>
+                        </div>
+                    </li>
                 </ul>
+            </CardContent>
+        </Card>
+
+        <Card>
+            <CardHeader>
+                <CardTitle>{c.squeezeTitle}</CardTitle>
+            </CardHeader>
+            <CardContent className="prose dark:prose-invert max-w-none space-y-4">
+                <p>{c.squeezeP1}</p>
+                <p>{c.squeezeP2} <IMath>h(x) \\le f(x) \\le g(x)</IMath> {c.squeezeP3} <IMath>\\lim_{x \\to c} h(x) = \\lim_{x \\to c} g(x) = L</IMath>, {c.squeezeP4}</p>
+                <div className="bg-muted p-4 rounded-lg text-center">
+                    <BMath>{`\\lim_{x \\to c} f(x) = L`}</BMath>
+                </div>
             </CardContent>
         </Card>
 
@@ -301,7 +391,7 @@ const LimitsTheory = () => {
                  <ol className='list-decimal pl-6 space-y-2 mt-2'>
                     <li><IMath>f(c)</IMath> {c.cond1} <IMath>c</IMath> {c.cond1_p2} <IMath>f</IMath>).</li>
                     <li><IMath>{`\\lim_{x \\to c} f(x)`}</IMath> {c.cond2}</li>
-                    <li><IMath>{`\\lim_{x \\to c} f(x) = f(c)`}</IMath>.</li>
+                    <li>{c.cond3} <IMath>{`\\lim_{x \\to c} f(x) = f(c)`}</IMath>.</li>
                 </ol>
             </CardContent>
         </Card>

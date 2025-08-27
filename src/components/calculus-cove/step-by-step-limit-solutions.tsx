@@ -223,6 +223,35 @@ const solutions_en = [
             yDomain: [-20, 20] as [number, number],
             isRemovable: false
         }
+    },
+    {
+        problem: "\\lim_{x \\to 0} \\frac{\\tan(x) - \\sin(x)}{x^3}",
+        steps: [
+            {
+                explanation: "This gives 0/0. We use identities tan(x) = sin(x)/cos(x).",
+                math: "= \\lim_{x \\to 0} \\frac{\\frac{\\sin(x)}{\\cos(x)} - \\sin(x)}{x^3} = \\lim_{x \\to 0} \\frac{\\sin(x)(1 - \\cos(x))}{x^3 \\cos(x)}"
+            },
+            {
+                explanation: "Separate the terms to use the special limits.",
+                math: "= \\lim_{x \\to 0} \\left( \\frac{\\sin(x)}{x} \\right) \\cdot \\left( \\frac{1 - \\cos(x)}{x^2} \\right) \\cdot \\left( \\frac{1}{\\cos(x)} \\right)"
+            },
+            {
+                explanation: "We know lim(sin(x)/x) = 1 and lim((1-cos(x))/x^2) = 1/2.",
+                math: "= (1) \\cdot \\left( \\frac{1}{2} \\right) \\cdot \\left( \\frac{1}{\\cos(0)} \\right)"
+            },
+            {
+                explanation: "Calculate the final result.",
+                math: "= 1 \\cdot \\frac{1}{2} \\cdot \\frac{1}{1} = \\frac{1}{2}"
+            }
+        ],
+        graph: {
+            func: (x: number) => x !== 0 ? (Math.tan(x) - Math.sin(x)) / (x**3) : undefined,
+            c: 0,
+            limit: 0.5,
+            xDomain: [-1, 1] as [number, number],
+            yDomain: [0, 1] as [number, number],
+            isRemovable: true
+        }
     }
 ];
 
@@ -438,6 +467,35 @@ const solutions_es = [
             yDomain: [-20, 20] as [number, number],
             isRemovable: false
         }
+    },
+    {
+        problem: "\\lim_{x \\to 0} \\frac{\\tan(x) - \\sin(x)}{x^3}",
+        steps: [
+            {
+                explanation: "Sustituir da 0/0. Usamos la identidad tan(x) = sin(x)/cos(x).",
+                math: "= \\lim_{x \\to 0} \\frac{\\frac{\\sin(x)}{\\cos(x)} - \\sin(x)}{x^3} = \\lim_{x \\to 0} \\frac{\\sin(x)(1 - \\cos(x))}{x^3 \\cos(x)}"
+            },
+            {
+                explanation: "Separamos los términos para usar los límites especiales.",
+                math: "= \\lim_{x \\to 0} \\left( \\frac{\\sin(x)}{x} \\right) \\cdot \\left( \\frac{1 - \\cos(x)}{x^2} \\right) \\cdot \\left( \\frac{1}{\\cos(x)} \\right)"
+            },
+            {
+                explanation: "Sabemos que lim(sin(x)/x) = 1 y lim((1-cos(x))/x^2) = 1/2.",
+                math: "= (1) \\cdot \\left( \\frac{1}{2} \\right) \\cdot \\left( \\frac{1}{\\cos(0)} \\right)"
+            },
+            {
+                explanation: "Calculamos el resultado final.",
+                math: "= 1 \\cdot \\frac{1}{2} \\cdot \\frac{1}{1} = \\frac{1}{2}"
+            }
+        ],
+        graph: {
+            func: (x: number) => x !== 0 ? (Math.tan(x) - Math.sin(x)) / (x**3) : undefined,
+            c: 0,
+            limit: 0.5,
+            xDomain: [-1, 1] as [number, number],
+            yDomain: [0, 1] as [number, number],
+            isRemovable: true
+        }
     }
 ];
 
@@ -511,5 +569,3 @@ export function StepByStepLimitSolutions() {
         </Card>
     )
 }
-
-    
