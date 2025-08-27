@@ -359,6 +359,11 @@ const LimitsTheory = () => {
                              <BMath>{`\\lim_{x \\to 0} \\frac{1 - \\cos(x)}{x} = 0`}</BMath>
                         </div>
                     </li>
+                     <li>
+                         <div className="bg-muted p-4 rounded-lg text-center">
+                             <BMath>{`\\lim_{x \\to 0} \\frac{1 - \\cos(x)}{x^2} = \\frac{1}{2}`}</BMath>
+                        </div>
+                    </li>
                     <li>
                          <div className="bg-muted p-4 rounded-lg text-center">
                              <BMath>{`\\lim_{x \\to 0} \\frac{\\tan(x)}{x} = 1`}</BMath>
