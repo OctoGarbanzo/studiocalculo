@@ -14,6 +14,7 @@ import { AreaChart } from 'lucide-react';
 const solutions_en = [
     {
         problem: "\\lim_{x \\to 2} (x^2 + 3x - 1)",
+        type: 'polynomial',
         steps: [
             {
                 explanation: "The function is a polynomial. We can use the Direct Substitution Property.",
@@ -39,6 +40,7 @@ const solutions_en = [
     },
     {
         problem: "\\lim_{x \\to 3} \\frac{x^2 - 9}{x - 3}",
+        type: 'factor',
         steps: [
             {
                 explanation: "If we substitute x=3, we get 0/0, which is an indeterminate form. We need to simplify the expression by factoring the numerator.",
@@ -64,6 +66,7 @@ const solutions_en = [
     },
     {
         problem: "\\lim_{x \\to 0} \\frac{\\sqrt{x+4} - 2}{x}",
+        type: 'conjugate',
         steps: [
             {
                 explanation: "Substituting x=0 gives 0/0. We multiply by the conjugate of the numerator.",
@@ -93,6 +96,7 @@ const solutions_en = [
     },
      {
         problem: "\\lim_{x \\to \\infty} \\frac{2x^2 + 1}{3x^2 - x + 5}",
+        type: 'infinity',
         steps: [
             {
                 explanation: "To find the limit at infinity of a rational function, divide the numerator and denominator by the highest power of x, which is x^2.",
@@ -118,6 +122,7 @@ const solutions_en = [
     },
     {
         problem: "\\lim_{x \\to \\infty} \\frac{3x^3 + 2x}{x^2 - 5x + 1}",
+        type: 'infinity',
         steps: [
             {
                 explanation: "The degree of the numerator (3) is greater than the degree of the denominator (2). The limit will be either positive or negative infinity.",
@@ -147,6 +152,7 @@ const solutions_en = [
     },
     {
         problem: "\\lim_{x \\to \\infty} \\frac{4x^2 - 1}{x^3 + 2x^2}",
+        type: 'infinity',
         steps: [
             {
                 explanation: "The degree of the numerator (2) is less than the degree of the denominator (3). The limit will be 0.",
@@ -176,6 +182,7 @@ const solutions_en = [
     },
     {
         problem: "\\lim_{x \\to 0^+} \\frac{1}{x}",
+        type: 'sided',
         steps: [
             {
                 explanation: "This is a right-sided limit. We are interested in the behavior of the function as x approaches 0 from the positive side.",
@@ -201,6 +208,7 @@ const solutions_en = [
     },
     {
         problem: "\\lim_{x \\to 0^-} \\frac{1}{x}",
+        type: 'sided',
         steps: [
             {
                 explanation: "This is a left-sided limit. We are interested in the behavior of the function as x approaches 0 from the negative side.",
@@ -226,6 +234,7 @@ const solutions_en = [
     },
     {
         problem: "\\lim_{x \\to 0} \\frac{\\tan(x) - \\sin(x)}{x^3}",
+        type: 'trig',
         steps: [
             {
                 explanation: "This gives 0/0. We use identities tan(x) = sin(x)/cos(x).",
@@ -258,6 +267,7 @@ const solutions_en = [
 const solutions_es = [
     {
         problem: "\\lim_{x \\to 2} (x^2 + 3x - 1)",
+        type: 'polynomial',
         steps: [
             {
                 explanation: "La función es un polinomio. Podemos usar la Propiedad de Sustitución Directa.",
@@ -283,6 +293,7 @@ const solutions_es = [
     },
     {
         problem: "\\lim_{x \\to 3} \\frac{x^2 - 9}{x - 3}",
+        type: 'factor',
         steps: [
             {
                 explanation: "Si sustituimos x=3, obtenemos 0/0, que es una forma indeterminada. Necesitamos simplificar la expresión factorizando el numerador.",
@@ -308,6 +319,7 @@ const solutions_es = [
     },
      {
         problem: "\\lim_{x \\to 0} \\frac{\\sqrt{x+4} - 2}{x}",
+        type: 'conjugate',
         steps: [
             {
                 explanation: "Sustituir x=0 da 0/0. Multiplicamos por el conjugado del numerador.",
@@ -337,6 +349,7 @@ const solutions_es = [
     },
     {
         problem: "\\lim_{x \\to \\infty} \\frac{2x^2 + 1}{3x^2 - x + 5}",
+        type: 'infinity',
         steps: [
             {
                 explanation: "Para encontrar el límite al infinito de una función racional, divide el numerador y el denominador por la mayor potencia de x, que es x^2.",
@@ -362,6 +375,7 @@ const solutions_es = [
     },
     {
         problem: "\\lim_{x \\to \\infty} \\frac{3x^3 + 2x}{x^2 - 5x + 1}",
+        type: 'infinity',
         steps: [
             {
                 explanation: "El grado del numerador (3) es mayor que el grado del denominador (2). El límite será infinito positivo o negativo.",
@@ -391,6 +405,7 @@ const solutions_es = [
     },
     {
         problem: "\\lim_{x \\to \\infty} \\frac{4x^2 - 1}{x^3 + 2x^2}",
+        type: 'infinity',
         steps: [
             {
                 explanation: "El grado del numerador (2) es menor que el grado del denominador (3). El límite será 0.",
@@ -420,6 +435,7 @@ const solutions_es = [
     },
     {
         problem: "\\lim_{x \\to 0^+} \\frac{1}{x}",
+        type: 'sided',
         steps: [
             {
                 explanation: "Este es un límite lateral por la derecha. Estamos interesados en el comportamiento de la función cuando x se acerca a 0 desde valores positivos.",
@@ -445,6 +461,7 @@ const solutions_es = [
     },
     {
         problem: "\\lim_{x \\to 0^-} \\frac{1}{x}",
+        type: 'sided',
         steps: [
             {
                 explanation: "Este es un límite lateral por la izquierda. Estamos interesados en el comportamiento de la función cuando x se acerca a 0 desde valores negativos.",
@@ -470,6 +487,7 @@ const solutions_es = [
     },
     {
         problem: "\\lim_{x \\to 0} \\frac{\\tan(x) - \\sin(x)}{x^3}",
+        type: 'trig',
         steps: [
             {
                 explanation: "Sustituir da 0/0. Usamos la identidad tan(x) = sin(x)/cos(x).",
@@ -499,10 +517,17 @@ const solutions_es = [
     }
 ];
 
+interface StepByStepLimitSolutionsProps {
+    filter?: 'infinity' | 'all';
+}
 
-export function StepByStepLimitSolutions() {
+export function StepByStepLimitSolutions({ filter = 'all' }: StepByStepLimitSolutionsProps) {
     const { language } = useLanguage();
-    const solutions = language === 'en' ? solutions_en : solutions_es;
+    const allSolutions = language === 'en' ? solutions_en : solutions_es;
+
+    const solutions = filter === 'all'
+        ? allSolutions.filter(s => s.type !== 'infinity')
+        : allSolutions.filter(s => s.type === 'infinity');
 
     const content = {
         en: {
@@ -545,22 +570,24 @@ export function StepByStepLimitSolutions() {
                                         </div>
                                     </div>
                                 ))}
-                                <div className="flex justify-end mt-4">
-                                     <Dialog>
-                                        <DialogTrigger asChild>
-                                            <Button variant="outline" size="sm">
-                                                <AreaChart className="mr-2 h-4 w-4" />
-                                                {viewGraph}
-                                            </Button>
-                                        </DialogTrigger>
-                                        <DialogContent className="max-w-xl">
-                                            <DialogHeader>
-                                                <DialogTitle>{graphOf} <IMath>{solution.problem}</IMath></DialogTitle>
-                                            </DialogHeader>
-                                            <LimitSolutionGraph {...solution.graph} />
-                                        </DialogContent>
-                                    </Dialog>
-                                </div>
+                                {solution.graph.c !== Infinity && (
+                                    <div className="flex justify-end mt-4">
+                                        <Dialog>
+                                            <DialogTrigger asChild>
+                                                <Button variant="outline" size="sm">
+                                                    <AreaChart className="mr-2 h-4 w-4" />
+                                                    {viewGraph}
+                                                </Button>
+                                            </DialogTrigger>
+                                            <DialogContent className="max-w-xl">
+                                                <DialogHeader>
+                                                    <DialogTitle>{graphOf} <IMath>{solution.problem}</IMath></DialogTitle>
+                                                </DialogHeader>
+                                                <LimitSolutionGraph {...solution.graph} />
+                                            </DialogContent>
+                                        </Dialog>
+                                    </div>
+                                )}
                             </AccordionContent>
                         </AccordionItem>
                     ))}

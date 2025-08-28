@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { IMath, BMath } from './math';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { useLanguage } from '@/hooks/use-language';
-import { InteractiveInfinityLimitGraph } from './interactive-infinity-limit-graph';
+import { StepByStepLimitSolutions } from './step-by-step-limit-solutions';
 
 const InfinityLimitsTheory = () => {
     const { language } = useLanguage();
@@ -108,8 +108,6 @@ const InfinityLimitsTheory = () => {
                 <BMath>{`\\lim_{n \\to \\infty} \\frac{a_k n^k + \\dots}{b_j n^j + \\dots} = 0, \\quad k < j`}</BMath>
             </CardContent>
         </Card>
-
-        <InteractiveInfinityLimitGraph />
     </>)
 }
 
@@ -131,8 +129,13 @@ export function InfinityLimitsContent({ module }: { module: Module }) {
                     {language === 'es' ? 'Explora el comportamiento de las funciones cuando la variable tiende a infinito.' : 'Explore the behavior of functions as the variable approaches infinity.'}
                 </p>
             </div>
-            <div className="space-y-8">
-                <InfinityLimitsTheory />
+            <div className="grid gap-8 lg:grid-cols-2">
+                <div className="space-y-8">
+                    <InfinityLimitsTheory />
+                </div>
+                <div className="space-y-8">
+                    <StepByStepLimitSolutions filter="infinity" />
+                </div>
             </div>
        </div>
     </TooltipProvider>
