@@ -13,7 +13,7 @@ import {
   SidebarInset,
 } from '@/components/ui/sidebar';
 import { Card, CardHeader, CardTitle } from '@/components/ui/card';
-import { AreaChart, Infinity, Target, TrendingUp, Menu, Atom } from 'lucide-react';
+import { AreaChart, Infinity, Target, TrendingUp, Menu, Atom, Divide } from 'lucide-react';
 import { IntegralIcon } from '@/components/icons';
 import { ModuleContent } from '@/components/calculus-cove/module-content';
 import { Button } from '@/components/ui/button';
@@ -24,6 +24,7 @@ import { useLanguage } from '@/hooks/use-language';
 const modules_en = [
   { id: 'limits', title: 'Limits and Continuity', icon: Infinity },
   { id: 'trig-limits', title: 'Trigonometric Limits', icon: Atom },
+  { id: 'infinity-limits', title: 'Limits at Infinity', icon: Divide },
   { id: 'derivatives', title: 'Derivatives', icon: TrendingUp },
   { id: 'applications-of-derivatives', title: 'Applications of the Derivative', icon: Target, comingSoon: true },
   { id: 'integrals', title: 'Integrals', icon: IntegralIcon, comingSoon: true },
@@ -33,6 +34,7 @@ const modules_en = [
 const modules_es = [
     { id: 'limits', title: 'Límites y Continuidad', icon: Infinity },
     { id: 'trig-limits', title: 'Límites Trigonométricos', icon: Atom },
+    { id: 'infinity-limits', title: 'Límites al Infinito', icon: Divide },
     { id: 'derivatives', title: 'Derivadas', icon: TrendingUp },
     { id: 'applications-of-derivatives', title: 'Aplicaciones de la Derivada', icon: Target, comingSoon: true },
     { id: 'integrals', title: 'Integrales', icon: IntegralIcon, comingSoon: true },

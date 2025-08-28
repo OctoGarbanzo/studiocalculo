@@ -7,6 +7,7 @@ import { PracticeTab } from './practice-tab';
 import { QuizTab } from './quiz-tab';
 import { useLanguage } from '@/hooks/use-language';
 import { TrigLimitsContent } from './trig-limits-content';
+import { InfinityLimitsContent } from './infinity-limits-content';
 
 type Module = {
   id: string;
@@ -20,6 +21,10 @@ export function ModuleContent({ module }: { module: Module }) {
 
   if (module.id === 'trig-limits') {
     return <TrigLimitsContent module={module} />;
+  }
+
+  if (module.id === 'infinity-limits') {
+    return <InfinityLimitsContent module={module} />;
   }
 
   if (module.comingSoon) {
