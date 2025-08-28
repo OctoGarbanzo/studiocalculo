@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -168,6 +167,25 @@ const LimitsTheory = () => {
             oneSidedP3: "The limit from the left means that x approaches c from values less than c. It is denoted as:",
             oneSidedP4: "For the two-sided limit",
             oneSidedP5: "to exist, the limit from the left and the limit from the right must both exist and be equal.",
+            propertiesTitle: "Properties of Limits",
+            propertiesIntro: "Suppose that c is a constant and the limits",
+            propertiesIntro2: "and",
+            propertiesIntro3: "exist. Then:",
+            propConstant: "Constant",
+            propScalar: "Scalar Multiple",
+            propSum: "Sum",
+            propDiff: "Difference",
+            propProd: "Product",
+            propQuot: "Quotient",
+            propPow: "Power",
+            propRoot: "Root",
+            propPoly: "Polynomial",
+            infinityTitle: "Limits at Infinity of Rational Functions",
+            infinityIntro: "To find the limit of a rational function as",
+            infinityIntro2: ", we compare the degrees of the polynomials in the numerator (n) and the denominator (m).",
+            infinityCase1: "If n < m, then the limit is 0.",
+            infinityCase2: "If n = m, then the limit is the ratio of the leading coefficients.",
+            infinityCase3: "If n > m, then the limit does not exist (it is either ∞ or -∞)."
         },
         es: {
             title: "Definición de un Límite",
@@ -190,6 +208,25 @@ const LimitsTheory = () => {
             oneSidedP3: "El límite por la izquierda significa que x se aproxima a c desde valores menores que c. Se denota como:",
             oneSidedP4: "Para que el límite bilateral",
             oneSidedP5: "exista, el límite por la izquierda y el límite por la derecha deben existir y ser iguales.",
+            propertiesTitle: "Propiedades de los Límites",
+            propertiesIntro: "Supongamos que c es una constante y que los límites",
+            propertiesIntro2: "y",
+            propertiesIntro3: "existen. Entonces:",
+            propConstant: "Constante",
+            propScalar: "Múltiplo Escalar",
+            propSum: "Suma",
+            propDiff: "Diferencia",
+            propProd: "Producto",
+            propQuot: "Cociente",
+            propPow: "Potencia",
+            propRoot: "Raíz",
+            propPoly: "Polinómica",
+            infinityTitle: "Límites al Infinito de Funciones Racionales",
+            infinityIntro: "Para encontrar el límite de una función racional cuando",
+            infinityIntro2: ", comparamos los grados del polinomio del numerador (n) y del denominador (m).",
+            infinityCase1: "Si n < m, entonces el límite es 0.",
+            infinityCase2: "Si n = m, entonces el límite es la razón de los coeficientes principales.",
+            infinityCase3: "Si n > m, entonces el límite no existe (es ∞ o -∞)."
         }
     }
 
@@ -225,6 +262,55 @@ const LimitsTheory = () => {
                 </div>
             </CardContent>
         </Card>
+
+        <Card>
+            <CardHeader>
+                <CardTitle>{c.propertiesTitle}</CardTitle>
+            </CardHeader>
+            <CardContent className="prose dark:prose-invert max-w-none space-y-4">
+                 <p>
+                    {c.propertiesIntro} <IMath>{`\\lim_{x \\to a} f(x) = A`}</IMath> {c.propertiesIntro2} <IMath>{`\\lim_{x \\to a} g(x) = B`}</IMath> {c.propertiesIntro3}
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+                    <div>
+                        <h4 className="font-semibold">{c.propConstant}</h4>
+                        <BMath>{`\\lim_{x \\to a} k = k`}</BMath>
+                    </div>
+                    <div>
+                        <h4 className="font-semibold">{c.propScalar}</h4>
+                        <BMath>{`\\lim_{x \\to a} [k \\cdot f(x)] = k \\cdot \\lim_{x \\to a} f(x) = kA`}</BMath>
+                    </div>
+                    <div>
+                        <h4 className="font-semibold">{c.propSum}</h4>
+                        <BMath>{`\\lim_{x \\to a} [f(x) + g(x)] = A + B`}</BMath>
+                    </div>
+                     <div>
+                        <h4 className="font-semibold">{c.propDiff}</h4>
+                        <BMath>{`\\lim_{x \\to a} [f(x) - g(x)] = A - B`}</BMath>
+                    </div>
+                    <div>
+                        <h4 className="font-semibold">{c.propProd}</h4>
+                        <BMath>{`\\lim_{x \\to a} [f(x) \\cdot g(x)] = A \\cdot B`}</BMath>
+                    </div>
+                    <div>
+                        <h4 className="font-semibold">{c.propQuot}</h4>
+                        <BMath>{`\\lim_{x \\to a} \\frac{f(x)}{g(x)} = \\frac{A}{B}, \\quad B \\neq 0`}</BMath>
+                    </div>
+                    <div>
+                        <h4 className="font-semibold">{c.propPow}</h4>
+                        <BMath>{`\\lim_{x \\to a} [f(x)]^n = A^n`}</BMath>
+                    </div>
+                     <div>
+                        <h4 className="font-semibold">{c.propRoot}</h4>
+                        <BMath>{`\\lim_{x \\to a} \\sqrt[n]{f(x)} = \\sqrt[n]{A}`}</BMath>
+                    </div>
+                     <div>
+                        <h4 className="font-semibold">{c.propPoly}</h4>
+                         <p className='text-sm'><IMath>{`\\lim_{x \\to a} p(x) = p(a)`}</IMath></p>
+                    </div>
+                </div>
+            </CardContent>
+        </Card>
         
         <Card>
             <CardHeader>
@@ -246,6 +332,21 @@ const LimitsTheory = () => {
                 </div>
             </CardContent>
         </Card>
+
+        <Card>
+            <CardHeader>
+                <CardTitle>{c.infinityTitle}</CardTitle>
+            </CardHeader>
+            <CardContent className="prose dark:prose-invert max-w-none space-y-4">
+                <p>{c.infinityIntro} <IMath>x \to \infty</IMath>{c.infinityIntro2}</p>
+                <ul className="list-disc pl-6 space-y-2">
+                    <li>{c.infinityCase1}</li>
+                    <li>{c.infinityCase2}</li>
+                    <li>{c.infinityCase3}</li>
+                </ul>
+            </CardContent>
+        </Card>
+
     </>)
 }
 
